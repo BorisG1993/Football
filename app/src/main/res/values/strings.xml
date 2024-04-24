@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">FootBall</string>
+    <string name="app_name">FOOTBALL RESULTS DIARY</string>
+    <string name="main_menu_title">MAIN MENU</string>
+    <string name="teams_list">Manage Teams</string>
+    <string name="add_game">Add Game</string>
+    <string name="enter_team_name">Enter Team Name</string>
+    <string name="btn_search_team">Search</string>
+    <string name="btn_back">To Menu</string>
+    <string name="btn_add_team">Add</string>
 </resources>

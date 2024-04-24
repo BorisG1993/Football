@@ -1,26 +1,24 @@
 package com.example.football;
+import androidx.annotation.NonNull;
 
 public class Team {
-    private int id;
-    private String TeamName;
+    private String name;
 
     public Team(String TeamName){
-        this.TeamName = TeamName;
+        this.name = TeamName;
     }
 
-    public int getId() {
-        return id;
+    public String getName() {
+        return name;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setName(String TeamName) {
+        this.name = TeamName;
     }
 
-    public String getTeamName() {
-        return TeamName;
-    }
-
-    public void setTeamName(String TeamName) {
-        this.TeamName = TeamName;
+    @NonNull
+    @Override
+    public String toString() {
+        return name;
     }
 }

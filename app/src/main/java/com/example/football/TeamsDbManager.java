@@ -1,14 +1,12 @@
 package com.example.football;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
 import java.util.ArrayList;
 
-public class DataTeamsTable extends SQLiteOpenHelper {
+public class TeamsDbManager extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "Teams.db";
     public static final int DATABASE_VERSION = 1;
 
@@ -20,7 +18,7 @@ public class DataTeamsTable extends SQLiteOpenHelper {
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             COLUMN_Team_Name + " TEXT)";
 
-    public DataTeamsTable(Context context) {
+    public TeamsDbManager(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -32,7 +30,7 @@ public class DataTeamsTable extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Handle database schema upgrades if needed
-        db.execSQL("DROP TABLE IF EXISTS " + TEAMS);
+        db.execSQL(" DROP TABLE IF EXISTS " + TEAMS);
         onCreate(db);
     }
 
@@ -43,11 +41,9 @@ public class DataTeamsTable extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             do {
-                @SuppressLint("Range") int id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID));
                 @SuppressLint("Range") String teamName = cursor.getString(cursor.getColumnIndex(COLUMN_Team_Name));
 
                 Team team= new Team(teamName);
-                team.setId(id);
                 teamsList.add(team);
             } while (cursor.moveToNext());
         }
@@ -56,6 +52,5 @@ public class DataTeamsTable extends SQLiteOpenHelper {
         db.close();
         return teamsList;
     }
-
 
 }

@@ -20,9 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ViewListContents" />
+        <activity android:name=".GamesList" />
         <activity android:name=".ViewListContentsDate"/>
-        <activity android:name=".ViewContetn2"/>
+        <activity android:name=".Stats"/>
     </application>
 
 </manifest>

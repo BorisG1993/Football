@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class AddGame extends AppCompatActivity {
+public class AddTeam extends AppCompatActivity {
     EditText gameId, gameDate, teamHome, teamAway, teamHomeScore, teamAwayScore;
     DatabaseHelper db2;
     SQLiteOpenHelper openHelper;
@@ -50,7 +50,7 @@ public class AddGame extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Please Field all Information",Toast.LENGTH_LONG).show();
                     flag=1;
                 }
-               if(game.getDate().isEmpty() && game.getTeamHome().isEmpty() && game.getTeamAway().isEmpty()){
+                if(game.getDate().isEmpty() && game.getTeamHome().isEmpty() && game.getTeamAway().isEmpty()){
                     Toast.makeText(getApplicationContext(),"Please Field all Information",Toast.LENGTH_LONG).show();
                     flag=2;
                 }

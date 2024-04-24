@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/EditTextSearchTeam"
+        android:layout_width="380dp"
+        android:layout_height="63dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:hint="@string/enter_team_name" />
+
+    <Button
+        android:id="@+id/BtnSearchTeam"
+        style="@style/ButtonStyle"
+        android:layout_width="380dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="@string/btn_search_team" />
+
+    <Button
+        android:id="@+id/BtnAddTeam"
+        style="@style/ButtonStyle"
+        android:layout_width="380dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="@string/btn_add_team" />
+
+    <ListView
+        android:id="@+id/ListTeams"
+        android:layout_width="380dp"
+        android:layout_height="327dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp" />
+
+    <Button
+        android:id="@+id/BtnBack"
+        style="@style/ButtonStyle"
+        android:layout_width="380dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="@string/btn_back" />
+
+</LinearLayout>

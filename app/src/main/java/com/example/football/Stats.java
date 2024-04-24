@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class ViewContetn2 extends AppCompatActivity {
+public class Stats extends AppCompatActivity {
 
     Button search22;
     EditText txt66;
@@ -22,7 +22,7 @@ public class ViewContetn2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.viewcontent2);
+        setContentView(R.layout.activity_games_list);
         search22=(Button)findViewById(R.id.button2);
         search22.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,7 +41,7 @@ public class ViewContetn2 extends AppCompatActivity {
         ArrayList<FootballGame> thelist=new ArrayList<>();
         Cursor data = (Cursor) mydb.getAllGames();
         if(data.getCount()==0){
-            Toast.makeText(ViewContetn2.this,"The Database is Empty",Toast.LENGTH_LONG).show();
+            Toast.makeText(Stats.this,"The Database is Empty",Toast.LENGTH_LONG).show();
 
         }else{
             while(data.moveToNext()){
