@@ -2,117 +2,145 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scoreLabel"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Add">
+    tools:context=".AddGame">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/DateLabel"
         android:layout_width="131dp"
         android:layout_height="34dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="145dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="55dp"
         android:text="Date"
         android:textSize="24sp" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/TeamHomeLabel"
         android:layout_width="131dp"
         android:layout_height="34dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="-2dp"
-        android:layout_marginLeft="-2dp"
-        android:layout_marginTop="348dp"
-        android:text="Team2"
+        android:layout_marginStart="18dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="144dp"
+        android:text="Team Home"
         android:textSize="24sp" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/TeamAwayLabel"
         android:layout_width="131dp"
         android:layout_height="34dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="3dp"
-        android:layout_marginLeft="3dp"
-        android:layout_marginTop="247dp"
-        android:text="Team1"
+        android:layout_marginStart="22dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="224dp"
+        android:text="Team Away"
         android:textSize="24sp" />
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="131dp"
-        android:layout_height="34dp"
+        android:id="@+id/TeamHomeScoreLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="43dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="316dp"
+        android:text="Team Home Score"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/TeamAwayScoreLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="393dp"
+        android:text="Team Away Score"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/DateInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_marginTop="52dp"
-        android:text="City"
-        android:textSize="24sp" />
+        android:layout_marginEnd="23dp"
+        android:layout_marginRight="23dp"
+        android:ems="10"
+        android:hint="01/01/2024"
+        android:inputType="date" />
 
     <EditText
-        android:id="@+id/TxtTeam1"
+        android:id="@+id/TeamHomeInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="242dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginRight="28dp"
+        android:layout_marginTop="138dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginRight="7dp"
         android:ems="10"
-        android:hint="Enter Team1"
+        android:hint="Team Home Name"
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/TxtDate"
+        android:id="@+id/TeamAwayInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="142dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginRight="28dp"
+        android:layout_marginTop="204dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
         android:ems="10"
-        android:hint="Enter Date"
+        android:hint="Team Away Name"
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/TxtTeam2"
-        android:layout_width="wrap_content"
+        android:id="@+id/TeamHomeScoreInput"
+        android:layout_width="147dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="345dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginRight="36dp"
+        android:layout_marginTop="315dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginRight="34dp"
         android:ems="10"
-        android:hint="Enter Team2"
-        android:inputType="textPersonName" />
+        android:hint="Team Home Score"
+        android:inputType="numberSigned" />
 
     <EditText
-        android:id="@+id/txtCity"
-        android:layout_width="wrap_content"
+        android:id="@+id/TeamAwayScoreInput"
+        android:layout_width="154dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="51dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginTop="385dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginRight="33dp"
         android:ems="10"
-        android:hint="Enetr City"
-        android:inputType="textPersonName" />
+        android:hint="Team Away Score"
+        android:inputType="numberSigned" />
 
     <Button
         android:id="@+id/BtnAdd"
@@ -137,4 +165,16 @@
         android:layout_marginRight="51dp"
         android:layout_marginBottom="79dp"
         android:text="Back" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp">
+
+    </com.google.android.material.textfield.TextInputLayout>
+
 </RelativeLayout>

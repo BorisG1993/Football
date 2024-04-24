@@ -12,30 +12,33 @@ import java.util.ArrayList;
 
 public class ViewListContents extends AppCompatActivity {
 
-    DatabaseHelper myDB;
+    DatabaseHelper Db;
+    DataManager dataManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.viewcontents_layout);
-        ListView listView=(ListView)findViewById(R.id.ListView);
-myDB=new DatabaseHelper(this);
-        ArrayList<FootBall> thelist=new ArrayList<>();
-        Cursor data=myDB.getListContent();
+        ListView listView = (ListView)findViewById(R.id.ListView);
+        Db =new DatabaseHelper(this);
+        dataManager = new DataManager(this);
+        ArrayList<FootballGame> listGame = new ArrayList<>();
+        Cursor data = dataManager.getAllGames();
 
-if(data.getCount()==0){
-    Toast.makeText(ViewListContents.this,"The Database is Empty",Toast.LENGTH_LONG).show();
+        if(data.getCount()==0){
+            Toast.makeText(ViewListContents.this,"The Database is Empty",Toast.LENGTH_LONG).show();
+        }
+        else{
+            while(data.moveToNext()){
+                String dateText = data.getString(1);
+                String teamHomeText = data.getString(2);
+                String teamAwayText = data.getString(3);
+                int teamHomeScoreText = data.getInt(4);
+                int teamAwayScoreText = data.getInt(5);
+                listGame.add(new FootballGame(dateText, teamHomeText, teamAwayText, teamHomeScoreText, teamAwayScoreText));
+                ListAdapter listAdapter=new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,listGame);
+                listView.setAdapter(listAdapter);
 
-}else{
-    while(data.moveToNext()){
-        String city=data.getString(1);
-        String date=data.getString(2);
-        String Team1=data.getString(3);
-        String Team2=data.getString(4);
-        thelist.add(new FootBall(city,date,Team1,Team2));
-        ListAdapter listAdapter=new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,thelist);
-        listView.setAdapter(listAdapter);
-
-    }
-}
+            }
+        }
     }
 }

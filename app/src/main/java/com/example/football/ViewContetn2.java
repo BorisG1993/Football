@@ -16,41 +16,42 @@ import java.util.ArrayList;
 public class ViewContetn2 extends AppCompatActivity {
 
     Button search22;
-            EditText txt66;
-            String txt77;
+    EditText txt66;
+    String txt77;
     DatabaseHelper mydb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.viewcontent2);
-search22=(Button)findViewById(R.id.button2);
-search22.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        startsearch();
-    }
-});
+        search22=(Button)findViewById(R.id.button2);
+        search22.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listOfGames();
+            }
+        });
 
     }
 
-    public void startsearch(){
+    public void listOfGames(){
         txt66=(EditText)findViewById(R.id.editText9);
         txt77=txt66.getText().toString();
         ListView listView=(ListView)findViewById(R.id.llll);
         mydb=new DatabaseHelper(this);
-        ArrayList<FootBall> thelist=new ArrayList<>();
-        Cursor data=mydb.getListTeam(txt77);
+        ArrayList<FootballGame> thelist=new ArrayList<>();
+        Cursor data = (Cursor) mydb.getAllGames();
         if(data.getCount()==0){
             Toast.makeText(ViewContetn2.this,"The Database is Empty",Toast.LENGTH_LONG).show();
 
         }else{
             while(data.moveToNext()){
-                String city=data.getString(1);
-                String date=data.getString(2);
-                String Team1=data.getString(3);
-                String Team2=data.getString(4);
-                thelist.add(new FootBall(city,date,Team1,Team2));
-                ListAdapter listAdapter=new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,thelist);
+                String dateText = data.getString(1);
+                String teamHomeText = data.getString(2);
+                String teamAwayText = data.getString(3);
+                int teamHomeScoreText = data.getInt(4);
+                int teamAwayScoreText = data.getInt(5);
+                thelist.add(new FootballGame(dateText, teamHomeText, teamAwayText, teamHomeScoreText, teamAwayScoreText));
+                ListAdapter listAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,thelist);
                 listView.setAdapter(listAdapter);
 
             }

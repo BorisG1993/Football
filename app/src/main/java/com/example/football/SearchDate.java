@@ -36,14 +36,14 @@ SQLiteDatabase db;
                     Toast.makeText(SearchDate.this,"please enter information search",Toast.LENGTH_LONG).show();
 
                 }
-                if(db2.chkDate(txt2)==false){
-                    flag=2;
-                    textres.setText("this Date not found in Database");
-                }
-                if(db2.chkDate(txt2)==true){
-                    flag=0;
-                    textres.setText("Founded go list Date to show all this date");
-                }
+//                if(db2.chkDate(txt2)==false){
+//                    flag=2;
+//                    textres.setText("this Date not found in Database");
+//                }
+//                if(db2.chkDate(txt2)==true){
+//                    flag=0;
+//                    textres.setText("Founded go list Date to show all this date");
+//                }
             }
         });
         btn2.setOnClickListener(new View.OnClickListener() {

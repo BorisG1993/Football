@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-Button btnAdd,BtnUpdate,BtnDelete,Btnlist,btnsearch1,btnsearch2;
+    Button btnAdd,BtnUpdate,BtnDelete,Btnlist,btnsearch1,btnsearch2;
 
 
     @Override
@@ -63,7 +63,7 @@ Button btnAdd,BtnUpdate,BtnDelete,Btnlist,btnsearch1,btnsearch2;
 
     }
     public void openAdd(){
-        Intent intent=new Intent(this,Add.class);
+        Intent intent=new Intent(this, AddGame.class);
         startActivity(intent);
     }
     public void openUpdate()
@@ -80,13 +80,13 @@ Button btnAdd,BtnUpdate,BtnDelete,Btnlist,btnsearch1,btnsearch2;
         Intent intent=new Intent(this,Delete.class);
         startActivity(intent);
     }
-public void openSearchdate(){
-    Intent intent=new Intent(this,ViewListContentsDate.class);
-    startActivity(intent);
-}
-public void opensearchteam(){
-        Intent inten=new Intent(this,ViewContetn2.class);
-        startActivity(inten);
-}
+    public void openSearchdate(){
+        Intent intent=new Intent(this,ViewListContentsDate.class);
+        startActivity(intent);
+    }
+    public void opensearchteam(){
+            Intent inten=new Intent(this,ViewContetn2.class);
+            startActivity(inten);
+    }
 
 }
