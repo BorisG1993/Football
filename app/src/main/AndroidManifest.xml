@@ -9,10 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SearchDate"/>
-        <activity android:name=".Delete" />
-        <activity android:name=".Update" />
-        <activity android:name=".AddGame" />
         <activity android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -20,9 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GamesList" />
-        <activity android:name=".ViewListContentsDate"/>
-        <activity android:name=".Stats"/>
+
+        <activity android:name=".TeamsList"
+            android:exported="true" />
+
     </application>
 
 </manifest>

@@ -15,12 +15,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openAdd();
-            }
-        });
+
+//        btnAdd.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                openAddGame();
+//            }
+//        });
+
         btnTeamsList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void openAdd(){
-        Intent intent=new Intent(this, AddGame.class);
-        startActivity(intent);
-    }
+//    public void openAddGame(){
+//        Intent intent=new Intent(this, AddGame.class);
+//        startActivity(intent);
+//    }
 }
