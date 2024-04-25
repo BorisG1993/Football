@@ -6,7 +6,6 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <!-- Title -->
     <TextView
         android:id="@+id/Title"
         android:layout_width="match_parent"
@@ -19,7 +18,6 @@
         android:paddingBottom="20dp"
         android:textStyle="bold" />
 
-    <!-- Buttons -->
     <Button
         android:id="@+id/BtnTeamsList"
         style="@style/ButtonStyle"
