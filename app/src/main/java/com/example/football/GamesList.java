@@ -23,6 +23,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+// Class for the games list activity
 public class GamesList extends AppCompatActivity {
 
     private String teamName;
@@ -30,6 +31,7 @@ public class GamesList extends AppCompatActivity {
     private TeamsDbManager teamsDbManager;
     private ListView listView;
     List<Game> gamesList;
+    private TextView teamNameTitle;
     private Button btnBack, btnRemove;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,8 @@ public class GamesList extends AppCompatActivity {
 
         btnBack.setOnClickListener(v -> back());
         btnRemove.setOnClickListener(v -> removeTeam());
+
+        //Long press on game to remove it
         listView.setOnItemLongClickListener((parent, view, position, id) -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Delete");
@@ -60,6 +64,20 @@ public class GamesList extends AppCompatActivity {
         });
     }
 
+    public void init(){
+        gameDbManager = new GameDbManager(this);
+        teamsDbManager = new TeamsDbManager(this);
+        teamNameTitle = findViewById(R.id.TeamName);
+        btnBack = findViewById(R.id.BtnBackGamesList);
+        btnRemove = findViewById(R.id.BtnRemoveTeam);
+        listView = findViewById(R.id.ListGames);
+        gamesList = new ArrayList<>();
+
+        teamNameTitle.setText(teamName);
+        setList();
+    }
+
+    // Removes team from the database if no games for that team
     private void removeTeam() {
         if (gamesList.isEmpty()) {
             teamsDbManager.removeTeam(teamName);
@@ -69,21 +87,13 @@ public class GamesList extends AppCompatActivity {
         Toast.makeText(this, "Team Games List Must Be Empty First", Toast.LENGTH_SHORT).show();
     }
 
+    // Removes the game from the database and updates the list
     private void removeGame(Game game) {
         gameDbManager.removeGame(game.getId());
         setList();
     }
 
-    public void init(){
-        gameDbManager = new GameDbManager(this);
-        teamsDbManager = new TeamsDbManager(this);
-        btnBack = (Button) findViewById(R.id.BtnBackGamesList);
-        btnRemove = (Button) findViewById(R.id.BtnRemoveTeam);
-        listView = (ListView) findViewById(R.id.ListGames);
-        gamesList = new ArrayList<>();
-        setList();
-    }
-
+    // Updates the list sorting it by date
     private void setList(){
         gamesList = gameDbManager.getGames(teamName);
 
@@ -94,7 +104,7 @@ public class GamesList extends AppCompatActivity {
                 try {
                     Date date1 = dateFormat.parse(game1.getDate());
                     Date date2 = dateFormat.parse(game2.getDate());
-                    return date1.compareTo(date2);
+                    return date2.compareTo(date1);
                 } catch (java.text.ParseException e) {
                     e.printStackTrace();
                 }
@@ -102,6 +112,7 @@ public class GamesList extends AppCompatActivity {
             }
         });
 
+        // Creates the adapter with custom cosmetics to put the game data into the list view
         ArrayAdapter<Game> adapter = new ArrayAdapter<Game>(this, android.R.layout.simple_list_item_1, gamesList) {
             @NonNull
             @Override
@@ -116,6 +127,7 @@ public class GamesList extends AppCompatActivity {
         listView.setAdapter(adapter);
     }
 
+    // Returns back to teams list
     private void back(){
         Intent intent=new Intent(this,TeamsList.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

@@ -3,7 +3,7 @@ import androidx.annotation.NonNull;
 
 import java.util.UUID;
 
-
+// Holds data of the game
 public class Game {
     private long id;
     private String date;

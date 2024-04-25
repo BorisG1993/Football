@@ -5,9 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
 import java.util.ArrayList;
 
+// Connects with the database storing teams data
 public class TeamsDbManager extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "Teams.db";
     public static final int DATABASE_VERSION = 1;
@@ -29,6 +29,8 @@ public class TeamsDbManager extends SQLiteOpenHelper {
         db.execSQL(" DROP TABLE IF EXISTS " + TEAMS);
         onCreate(db);
     }
+
+    // Adds team to the database if team does not exist
     public boolean addTeam(String teamName) {
         if (doesTeamExist(teamName)) return false;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -38,6 +40,8 @@ public class TeamsDbManager extends SQLiteOpenHelper {
         db.close();
         return true;
     }
+
+    // Gets team from the databas if exists
     public Team getTeam(String teamName) {
         SQLiteDatabase db = this.getReadableDatabase();
         String selection = "LOWER(" + COLUMN_Team_Name + ") = ?";
@@ -54,6 +58,8 @@ public class TeamsDbManager extends SQLiteOpenHelper {
         db.close();
         return team;
     }
+
+    // Creates list of all teams from the database
     public ArrayList<Team> getAllTeams() {
         ArrayList<Team> teamsList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -73,6 +79,7 @@ public class TeamsDbManager extends SQLiteOpenHelper {
         return teamsList;
     }
 
+    // Removes team from the database
     public void removeTeam(String teamName) {
         SQLiteDatabase db = this.getWritableDatabase();
         String selection = COLUMN_Team_Name + " = ?";
@@ -81,6 +88,7 @@ public class TeamsDbManager extends SQLiteOpenHelper {
         db.close();
     }
 
+    // Checks if team exists in the database
     public boolean doesTeamExist(String teamName) {
         SQLiteDatabase db = this.getReadableDatabase();
         String selection = "LOWER(" + COLUMN_Team_Name + ") = ?";

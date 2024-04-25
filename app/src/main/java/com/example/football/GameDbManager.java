@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+// Connects with the database storing games data
 public class GameDbManager extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "Games.db";
     public static final int DATABASE_VERSION = 1;
@@ -46,6 +47,7 @@ public class GameDbManager extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    // Adds game data to the database
     public boolean addGame(Game game) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -67,6 +69,7 @@ public class GameDbManager extends SQLiteOpenHelper {
         return insertedId != -1;
     }
 
+    // Returns game data based on team's name
     public List<Game> getGames(String teamName) {
         List<Game> gamesList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -118,6 +121,7 @@ public class GameDbManager extends SQLiteOpenHelper {
         return gamesList;
     }
 
+    // Removes game from database using id given when inserted
     public void removeGame(long id) {
         SQLiteDatabase db = this.getWritableDatabase();
         try {

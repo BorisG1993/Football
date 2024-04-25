@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import java.util.Locale;
 
+// Class for the add game activity
 public class AddGame extends AppCompatActivity {
 
     EditText gameDate, homeTeamName, awayTeamName, homeTeamScore, awayTeamScore;
@@ -37,6 +38,7 @@ public class AddGame extends AppCompatActivity {
         btnBack = (Button) findViewById(R.id.BtnBackAddGame);
     }
 
+    // Reads game data from view fields, checks it and sends it to the database using game database manager
     private void addGame() {
         Game game = new Game();
         try {
@@ -69,6 +71,7 @@ public class AddGame extends AppCompatActivity {
         Toast.makeText(this, "Added Successfully", Toast.LENGTH_SHORT).show();
     }
 
+    // Validates input date format
     private boolean isValidDateFormat(String dateStr) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
         dateFormat.setLenient(false);
@@ -85,6 +88,7 @@ public class AddGame extends AppCompatActivity {
         }
     }
 
+    // Returns back to main menu
     private void backToMenu(){
         Intent intent=new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

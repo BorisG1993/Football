@@ -7,18 +7,38 @@
     android:orientation="vertical"
     tools:context=".GamesList">
 
+    <TextView
+        android:id="@+id/TeamName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:text="@string/untitled"
+        android:textColor="#4169E1"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ListGames"
+        app:layout_constraintVertical_bias="0.884" />
+
     <ListView
         android:id="@+id/ListGames"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:paddingStart="8dp"
-        android:paddingEnd="8dp"
         android:paddingTop="8dp"
+        android:paddingEnd="8dp"
         android:paddingBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline_bottom"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/TeamName"
+        app:layout_constraintVertical_bias="0.139" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_bottom"

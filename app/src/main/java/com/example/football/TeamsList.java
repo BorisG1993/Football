@@ -19,6 +19,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+// Class for the teams list view
 public class TeamsList extends AppCompatActivity {
     TeamsDbManager teamsDbManager;
     ArrayList<Team> teamsList;
@@ -35,6 +36,8 @@ public class TeamsList extends AppCompatActivity {
         btnBack.setOnClickListener(v -> backToMenu());
         btnAdd.setOnClickListener(v -> addTeam(editTextSearch.getText().toString()));
         btnSearch.setOnClickListener(v -> findTeam(editTextSearch.getText().toString()));
+
+        // Goes to games list on team name press
         listView.setOnItemClickListener((parent, view, position, id) -> openGamesList(teamsList.get(position).toString()));
     }
 
@@ -48,12 +51,14 @@ public class TeamsList extends AppCompatActivity {
         setList();
     }
 
+    // Opens games list by team name
     private void openGamesList(String teamName){
         Intent intent = new Intent(this, GamesList.class);
         intent.putExtra("team", teamName);
         startActivity(intent);
     }
 
+    // Adds team from the text view to the database using team database manager + updates the list view
     public void addTeam(String teamName){
         if (editTextSearch.getText().toString().isEmpty()) return;
         if (!teamsDbManager.addTeam(teamName)) {
@@ -63,6 +68,7 @@ public class TeamsList extends AppCompatActivity {
         setList();
     }
 
+    // sets the list view for all teams in the database
     private void setList(){
         teamsList = teamsDbManager.getAllTeams();
         ArrayAdapter<Team> adapter = new ArrayAdapter<Team>(this, android.R.layout.simple_list_item_1, teamsList) {
@@ -79,6 +85,7 @@ public class TeamsList extends AppCompatActivity {
         listView.setAdapter(adapter);
     }
 
+    // Finds team from the text view and shows only it on the teams list
     private void findTeam(String teamName){
         if (editTextSearch.getText().toString().isEmpty()) {
             setList();
@@ -95,6 +102,7 @@ public class TeamsList extends AppCompatActivity {
         listView.setAdapter(adapter);
     }
 
+    // Returns to main menu
     private void backToMenu(){
         Intent intent=new Intent(this,MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

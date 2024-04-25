@@ -19,4 +19,5 @@
     <string name="add">Add</string>
     <string name="back">Back</string>
     <string name="remove_team">Remove Team</string>
+    <string name="untitled"></string>
 </resources>

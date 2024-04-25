@@ -1,6 +1,7 @@
 package com.example.football;
 import androidx.annotation.NonNull;
 
+// Holds team name and getters/setters
 public class Team {
     private String name;
 

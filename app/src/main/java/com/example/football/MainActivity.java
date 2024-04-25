@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+// Class for the main menu
 public class MainActivity extends AppCompatActivity {
     Button btnAdd, btnTeamsList;
 
@@ -25,12 +26,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // Opens the list of teams
     public void openTeamsList(){
         Intent intent=new Intent(this, TeamsList.class);
         startActivity(intent);
 
     }
 
+    // Opens the list of games
     public void openAddGame(){
         Intent intent=new Intent(this, AddGame.class);
         startActivity(intent);
