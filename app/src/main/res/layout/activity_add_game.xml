@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/scoreLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".AddGame">
+
+        <TextView
+            android:id="@+id/DateLabel"
+            android:layout_width="130dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="36dp"
+            android:text="@string/date"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/TeamHomeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/home_team"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/DateLabel"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="59dp" />
+
+        <TextView
+            android:id="@+id/TeamAwayLabel"
+            android:layout_width="130dp"
+            android:layout_height="35dp"
+            android:text="@string/away_team"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/TeamHomeLabel"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="59dp" />
+
+        <TextView
+            android:id="@+id/TeamHomeScoreLabel"
+            android:layout_width="207dp"
+            android:layout_height="45dp"
+            android:text="@string/home_team_score"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/TeamAwayLabel"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="59dp" />
+
+        <TextView
+            android:id="@+id/TeamAwayScoreLabel"
+            android:layout_width="202dp"
+            android:layout_height="46dp"
+            android:text="@string/away_team_score"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/TeamHomeScoreLabel"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="59dp" />
+
+        <EditText
+            android:id="@+id/DateInput"
+            android:layout_width="237dp"
+            android:layout_height="58dp"
+            android:layout_marginEnd="15dp"
+            android:ems="10"
+            android:hint="01/01/2024"
+            android:inputType="date"
+            app:layout_constraintBottom_toBottomOf="@+id/DateLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/DateLabel"
+            app:layout_constraintTop_toTopOf="@+id/DateLabel"
+            app:layout_constraintVertical_bias="0.478" />
+
+        <EditText
+            android:id="@+id/TeamHomeInput"
+            android:layout_width="233dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:ems="10"
+            android:hint="@string/home_team_name_hint"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toBottomOf="@+id/TeamHomeLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/TeamHomeLabel"
+            app:layout_constraintTop_toTopOf="@+id/TeamHomeLabel" />
+
+        <EditText
+            android:id="@+id/TeamAwayInput"
+            android:layout_width="234dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:ems="10"
+            android:hint="@string/away_team_name_hint"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toBottomOf="@+id/TeamAwayLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/TeamAwayLabel"
+            app:layout_constraintTop_toTopOf="@+id/TeamAwayLabel" />
+
+        <EditText
+            android:id="@+id/TeamHomeScoreInput"
+            android:layout_width="148dp"
+            android:layout_height="59dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:ems="10"
+            android:hint="@string/home_team_score_hint"
+            android:inputType="numberSigned"
+            app:layout_constraintBottom_toBottomOf="@+id/TeamHomeScoreLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/TeamHomeScoreLabel"
+            app:layout_constraintTop_toTopOf="@+id/TeamHomeScoreLabel" />
+
+        <EditText
+            android:id="@+id/TeamAwayScoreInput"
+            android:layout_width="149dp"
+            android:layout_height="61dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:ems="10"
+            android:hint="@string/away_team_score_hint"
+            android:inputType="numberSigned"
+            app:layout_constraintBottom_toBottomOf="@+id/TeamAwayScoreLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/TeamAwayScoreLabel"
+            app:layout_constraintTop_toTopOf="@+id/TeamAwayScoreLabel" />
+
+        <Button
+            android:id="@+id/BtnAddGame"
+            style="@style/ButtonStyle"
+            android:layout_width="120dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="59dp"
+            android:layout_marginBottom="79dp"
+            android:text="@string/add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/BtnBackAddGame"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/TeamAwayScoreInput"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/BtnBackAddGame"
+            style="@style/ButtonStyle"
+            android:layout_width="120dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="59dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginBottom="79dp"
+            android:text="@string/btn_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/BtnAddGame"
+            app:layout_constraintTop_toBottomOf="@id/TeamAwayScoreInput"
+            app:layout_constraintVertical_bias="1.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

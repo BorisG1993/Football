@@ -7,4 +7,16 @@
     <string name="btn_search_team">Search</string>
     <string name="btn_back">To Menu</string>
     <string name="btn_add_team">Add</string>
+    <string name="date">Date</string>
+    <string name="home_team">Home Team</string>
+    <string name="away_team">Away Team</string>
+    <string name="home_team_score">Home Team Score</string>
+    <string name="away_team_score">Away Team Score</string>
+    <string name="home_team_name_hint">name</string>
+    <string name="away_team_name_hint">name</string>
+    <string name="home_team_score_hint">num</string>
+    <string name="away_team_score_hint">num</string>
+    <string name="add">Add</string>
+    <string name="back">Back</string>
+    <string name="remove_team">Remove Team</string>
 </resources>

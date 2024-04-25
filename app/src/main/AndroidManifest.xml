@@ -4,9 +4,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/football"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/football"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity"
@@ -18,6 +18,12 @@
         </activity>
 
         <activity android:name=".TeamsList"
+            android:exported="true" />
+
+        <activity android:name=".AddGame"
+            android:exported="true" />
+
+        <activity android:name=".GamesList"
             android:exported="true" />
 
     </application>

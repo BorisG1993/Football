@@ -9,26 +9,14 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
     Button btnAdd, btnTeamsList;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
 
-//        btnAdd.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                openAddGame();
-//            }
-//        });
-
-        btnTeamsList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openTeamsList();
-            }
-        });
+        btnAdd.setOnClickListener(v -> openAddGame());
+        btnTeamsList.setOnClickListener(v -> openTeamsList());
     }
 
     public void init(){
@@ -40,10 +28,11 @@ public class MainActivity extends AppCompatActivity {
     public void openTeamsList(){
         Intent intent=new Intent(this, TeamsList.class);
         startActivity(intent);
+
     }
 
-//    public void openAddGame(){
-//        Intent intent=new Intent(this, AddGame.class);
-//        startActivity(intent);
-//    }
+    public void openAddGame(){
+        Intent intent=new Intent(this, AddGame.class);
+        startActivity(intent);
+    }
 }

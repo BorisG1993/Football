@@ -1,16 +1,23 @@
 package com.example.football;
 import android.content.Intent;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class TeamsList extends AppCompatActivity {
     TeamsDbManager teamsDbManager;
@@ -25,36 +32,15 @@ public class TeamsList extends AppCompatActivity {
         setContentView(R.layout.activity_teams_list);
         init();
 
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                backToMenu();
-            }
-        });
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addTeam(editTextSearch.getText().toString());
-            }
-        });
-
-        btnSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                findTeam(editTextSearch.getText().toString());
-            }
-        });
-
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                openGamesList(teamsList.get(position).toString());
-//            }
-//        });
+        btnBack.setOnClickListener(v -> backToMenu());
+        btnAdd.setOnClickListener(v -> addTeam(editTextSearch.getText().toString()));
+        btnSearch.setOnClickListener(v -> findTeam(editTextSearch.getText().toString()));
+        listView.setOnItemClickListener((parent, view, position, id) -> openGamesList(teamsList.get(position).toString()));
     }
+
     public void init(){
         teamsDbManager = new TeamsDbManager(this);
-        btnBack = (Button) findViewById(R.id.BtnBack);
+        btnBack = (Button) findViewById(R.id.BtnBackTeams);
         btnAdd = (Button) findViewById(R.id.BtnAddTeam);
         btnSearch = (Button) findViewById(R.id.BtnSearchTeam);
         editTextSearch = (EditText) findViewById(R.id.EditTextSearchTeam);
@@ -62,16 +48,11 @@ public class TeamsList extends AppCompatActivity {
         setList();
     }
 
-    private void backToMenu(){
-        Intent intent=new Intent(this,MainActivity.class);
+    private void openGamesList(String teamName){
+        Intent intent = new Intent(this, GamesList.class);
+        intent.putExtra("team", teamName);
         startActivity(intent);
     }
-
-//    private void openGamesList(String teamName){
-//        Intent intent = new Intent(this, GamesList.class);
-//        intent.putExtra("team", teamName);
-//        startActivity(intent);
-//    }
 
     public void addTeam(String teamName){
         if (editTextSearch.getText().toString().isEmpty()) return;
@@ -84,7 +65,17 @@ public class TeamsList extends AppCompatActivity {
 
     private void setList(){
         teamsList = teamsDbManager.getAllTeams();
-        ArrayAdapter<Team> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, teamsList);
+        ArrayAdapter<Team> adapter = new ArrayAdapter<Team>(this, android.R.layout.simple_list_item_1, teamsList) {
+            @NonNull
+            @Override
+            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                View view = super.getView(position, convertView, parent);
+                TextView textView = (TextView) view;
+                textView.setTextColor(ContextCompat.getColor(getContext(), android.R.color.holo_orange_dark));
+                textView.setTypeface(null, Typeface.BOLD);
+                return view;
+            }
+        };
         listView.setAdapter(adapter);
     }
 
@@ -102,5 +93,12 @@ public class TeamsList extends AppCompatActivity {
         }
         ArrayAdapter<Team> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, singleTeamList);
         listView.setAdapter(adapter);
+    }
+
+    private void backToMenu(){
+        Intent intent=new Intent(this,MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
     }
 }

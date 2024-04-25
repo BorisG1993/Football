@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="BtnBackAddGame" type="id">btn_back_add_game</item>
+</resources>
