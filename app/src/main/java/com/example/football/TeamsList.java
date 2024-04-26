@@ -18,14 +18,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 // Class for the teams list view
 public class TeamsList extends AppCompatActivity {
     TeamsDbManager teamsDbManager;
+    boolean flag;
     ArrayList<Team> teamsList;
     EditText editTextSearch;
     Button btnAdd, btnBack, btnSearch;
     ListView listView;
+    ArrayAdapter<Team> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +51,8 @@ public class TeamsList extends AppCompatActivity {
         btnSearch = (Button) findViewById(R.id.BtnSearchTeam);
         editTextSearch = (EditText) findViewById(R.id.EditTextSearchTeam);
         listView = (ListView) findViewById(R.id.ListTeams);
-        setList();
+        flag = false;
+        setList("");
     }
 
     // Opens games list by team name
@@ -65,12 +69,23 @@ public class TeamsList extends AppCompatActivity {
             Toast.makeText(this, "Team Already Exists", Toast.LENGTH_SHORT).show();
             return;
         }
-        setList();
+        setList("");
     }
 
     // sets the list view for all teams in the database
-    private void setList(){
-        teamsList = teamsDbManager.getAllTeams();
+    private void setList(String name){
+
+        if (!Objects.equals(name, "")) {
+            Team team = teamsDbManager.getTeam(name);
+            teamsList = new ArrayList<>();
+            teamsList.add(team);
+            if (team == null) {
+                Toast.makeText(this, "Team Not Found", Toast.LENGTH_SHORT).show();
+                return;
+            }
+        }
+        else teamsList = teamsDbManager.getAllTeams();
+
         ArrayAdapter<Team> adapter = new ArrayAdapter<Team>(this, android.R.layout.simple_list_item_1, teamsList) {
             @NonNull
             @Override
@@ -82,24 +97,22 @@ public class TeamsList extends AppCompatActivity {
                 return view;
             }
         };
+
         listView.setAdapter(adapter);
     }
 
     // Finds team from the text view and shows only it on the teams list
     private void findTeam(String teamName){
         if (editTextSearch.getText().toString().isEmpty()) {
-            setList();
+            if (flag) {
+                setList("");
+                flag = false;
+            }
+
             return;
         }
-        Team team = teamsDbManager.getTeam(teamName);
-        List<Team> singleTeamList = new ArrayList<>();
-        singleTeamList.add(team);
-        if (team == null) {
-            Toast.makeText(this, "Team Not Found", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        ArrayAdapter<Team> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, singleTeamList);
-        listView.setAdapter(adapter);
+        flag = true;
+        setList(teamName);
     }
 
     // Returns to main menu
@@ -109,4 +122,5 @@ public class TeamsList extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
 }
