@@ -92,7 +92,7 @@ public class TeamsList extends AppCompatActivity {
             public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
                 TextView textView = (TextView) view;
-                textView.setTextColor(ContextCompat.getColor(getContext(), android.R.color.holo_orange_dark));
+                textView.setTextColor(ContextCompat.getColor(getContext(), android.R.color.holo_blue_dark));
                 textView.setTypeface(null, Typeface.BOLD);
                 return view;
             }

@@ -42,9 +42,15 @@ public class AddGame extends AppCompatActivity {
     private void addGame() {
         Game game = new Game();
         try {
+            Team homeTeamNameInDb = teamsDbManager.getTeam(homeTeamName.getText().toString());
+            Team AwayTeamNameInDb = teamsDbManager.getTeam(awayTeamName.getText().toString());
+            if (homeTeamNameInDb == null || AwayTeamNameInDb == null) {
+                Toast.makeText(this, "One Or More Teams Are Not In Teams List", Toast.LENGTH_SHORT).show();
+                return;
+            }
             game = game .date(gameDate.getText().toString())
-                        .homeTeamName(homeTeamName.getText().toString())
-                        .awayTeamName(awayTeamName.getText().toString())
+                        .homeTeamName(homeTeamNameInDb.getName())
+                        .awayTeamName(AwayTeamNameInDb.getName())
                         .homeTeamScore(Integer.parseInt(homeTeamScore.getText().toString()))
                         .awayTeamScore(Integer.parseInt(awayTeamScore.getText().toString()));
         }
@@ -60,10 +66,7 @@ public class AddGame extends AppCompatActivity {
             Toast.makeText(this, "Wrong Date Format", Toast.LENGTH_SHORT).show();
             return;
         }
-        if (! (teamsDbManager.doesTeamExist(game.getHomeTeamName()) && teamsDbManager.doesTeamExist(game.getAwayTeamName()))) {
-            Toast.makeText(this, "One Or More Teams Are Not In Teams List", Toast.LENGTH_SHORT).show();
-            return;
-        }
+
         if (!gameDbManager.addGame(game)) {
             Toast.makeText(this, "Something Went Wrong, Couldn't Add To Database", Toast.LENGTH_SHORT).show();
             return;
